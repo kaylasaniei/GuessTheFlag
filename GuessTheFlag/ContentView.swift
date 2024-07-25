@@ -25,7 +25,7 @@ struct ContentView: View {
             .ignoresSafeArea()
             VStack {
                 Spacer()
-                Text("Guess The Flag! ")
+                Text("Guess! The! Flag! ")
                     .font(.largeTitle.bold())
                     .foregroundStyle(.white)
                 
