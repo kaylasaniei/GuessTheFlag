@@ -41,9 +41,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
-                            Image(countries[number])
-                                .clipShape(.capsule)
-                                .shadow(radius: 5)
+                            FlagImage(country: countries, num: number)
                         }
                     }
                 }
@@ -54,11 +52,9 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
                 Text("Score: \(score)")
-                    .font(.title.bold())
-                    .foregroundStyle(.white)
+                    .normTitle()
                 Text("Question Number: \(questionNum)")
-                    .font(.title.bold())
-                    .foregroundStyle(.white)
+                    .normTitle()
                 Spacer()
             }
             .padding()
@@ -94,6 +90,31 @@ struct ContentView: View {
     func reset() {
         score = 0
         questionNum = 0
+    }
+}
+
+struct FlagImage: View {
+    var country: Array<String>
+    var num: Int
+    
+    var body: some View {
+        Image(country[num])
+            .clipShape(.capsule)
+            .shadow(radius: 5)
+    }
+}
+
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.title.bold())
+            .foregroundStyle(.white)
+    }
+}
+
+extension View {
+    func normTitle() -> some View {
+        modifier(Title())
     }
 }
 
